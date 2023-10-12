@@ -1,6 +1,6 @@
 <?php
 namespace App\Contracts;
-
+use App\Http\Controllers\Admin\BrandController;
 /**
  * Interface BaseContract
  * @package App\Contracts

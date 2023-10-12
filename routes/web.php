@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\BaseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +15,15 @@ use App\Http\Controllers\Admin\LoginController;
 |
 */
 require 'admin.php';
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('/', 'site.pages.homepage');
+Route::view('/login', 'site.pages.homepage')->name('login');
+Route::view('/register', 'site.pages.homepage')->name('register');
+Route::view('/', 'site.pages.homepage');
+Auth::routes();
 Route::get('/detail', function () {
     return view('product-detail');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

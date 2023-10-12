@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Http\Request;
 use App\Traits\FlashMessages;
+
 class BaseController extends Controller
 {
     

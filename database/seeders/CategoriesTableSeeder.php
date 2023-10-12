@@ -1,7 +1,8 @@
 <?php
+namespace Database\Seeders;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
 class CategoriesTableSeeder extends Seeder
 {
     /**
@@ -18,6 +19,7 @@ class CategoriesTableSeeder extends Seeder
             'menu'          =>  0,
         ]);
 
-        factory('App\Models\Category', 10)->create();
+        \App\Models\Category::factory()->count(10)->create(); 
     }
+    
 }

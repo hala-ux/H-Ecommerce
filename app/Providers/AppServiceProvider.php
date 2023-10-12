@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
+use App\Contract\BrandContract;
+use App\Repositories\BrandRepository;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+     //
+     $this->app->bind(\App\Contracts\BrandContract::class, App\Repositories\ClassImplementingBrandContract::class);
+    
     }
 
     /**
@@ -23,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        //
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\models\AttributeValue;
 /**
  * Class Attribute
  * @package App\Models

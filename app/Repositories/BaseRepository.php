@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Contracts\BaseContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Controllers\Admin\BrandController;
 /**
  * Class BaseRepository
  *

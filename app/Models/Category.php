@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Product;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model
 {
+    use HasFactory;
     protected $table = 'categories';
 
     protected $fillable = [
@@ -21,7 +24,7 @@ class Category extends Model
     public function setNameAttribute($value)
 {
     $this->attributes['name'] = $value;
-    $this->attributes['slug'] = str_slug($value);
+    $this->attributes['slug'] = str::slug($value);
 }
 
 public function parent()
@@ -32,6 +35,14 @@ public function parent()
 public function children()
 {
     return $this->hasMany(Category::class, 'parent_id');
+}
+
+/**
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+ */
+public function products()
+{
+    return $this->belongsToMany(Product::class, 'product_categories', 'category_id', 'product_id');
 }
 
 }

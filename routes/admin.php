@@ -2,6 +2,8 @@
 <?php
 
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\BrandController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,7 +21,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     })->name('admin.dashboard');
 
 });
-});
+
 Route::group(['prefix'  =>   'brands'], function() {
     Route::get('login', [LoginController::class,'showLoginForm'])->name('admin.login');
     Route::get('/', [BrandController::class,'index'])->name('admin.brands.index');
@@ -29,4 +31,5 @@ Route::group(['prefix'  =>   'brands'], function() {
     Route::post('/update', [BrandController::class,'update'])->name('admin.brands.update');
     Route::get('/{id}/delete', [BrandController::class,'delete'])->name('admin.brands.delete');
 
+});
 });
