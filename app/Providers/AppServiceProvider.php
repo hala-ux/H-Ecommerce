@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Contract\BrandContract;
+use App\Contract\CategoryContract;
+use App\Repositories\CategoryRepository;
 use App\Repositories\BrandRepository;
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
      //
      $this->app->bind(\App\Contracts\BrandContract::class, App\Repositories\ClassImplementingBrandContract::class);
-    
+     
     }
 
     /**

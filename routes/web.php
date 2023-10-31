@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Site\CategoryController;
+use App\Http\Controllers\Site\CheckoutController;
+use App\Http\Controllers\Site\AccountController;
+use App\Http\Controllers\Site\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +26,23 @@ Route::view('/register', 'site.pages.homepage')->name('register');
 Route::view('/', 'site.pages.homepage');
 Auth::routes();
 Route::get('/detail', function () {
-    return view('product-detail');
+    return view('site.pages.product');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/category/{slug}', [CategoryController::class,'show'])->name('category.show');
+Route::get('/product/{slug}', [ProductController::class,'show'])->name('product.show');
+Route::post('/product/add/cart', [ProductController::class,'addToCart'])->name('product.add.cart');
+
+
+Route::get('/cart', [CartController::class,'getCart'])->name('checkout.cart');
+Route::get('/cart/item/{id}/remove', [CartController::class,'removeItem'])->name('checkout.cart.remove');
+Route::get('/cart/clear', [CartController::class,'clearCart'])->name('checkout.cart.clear');
+
+
+Route::get('checkout/payment/complete', [CheckoutController::class,'complete'])->name('checkout.payment.complete');
+
+Route::get('account/orders', [AccountController::class,'getOrders'])->name('account.orders');

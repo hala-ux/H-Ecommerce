@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use TypiCMS\NestableTrait;
 class Category extends Model
 {
     use HasFactory;
+    use NestableTrait;
     protected $table = 'categories';
 
     protected $fillable = [

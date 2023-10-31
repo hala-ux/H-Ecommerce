@@ -9,12 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "darryldecode/cart": "~4.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.4"
+        "laravel/ui": "^3.4",
+        "paypal/rest-api-sdk-php": "*",
+        "srmklive/paypal": "~3.0",
+        "typicms/nestablecollection": "^2.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",
@@ -59,7 +63,8 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "vendor-dir": "d/pp"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

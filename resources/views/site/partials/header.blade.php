@@ -23,15 +23,15 @@
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="widgets-wrap d-flex justify-content-end">
-                        <div class="widget-header">
-                            <a href="#" class="icontext">
-                                <div class="icon-wrap icon-xs bg2 round text-secondary"><i
-                                        class="fa fa-shopping-cart"></i></div>
-                                <div class="text-wrap">
-                                    <small>3 items</small>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="widget-header">
+    <a href="#" class="icontext">
+        <div class="icon-wrap icon-xs bg2 round text-secondary"><i
+                class="fa fa-shopping-cart"></i></div>
+        <div class="text-wrap">
+            <small>{{ $cartCount }} items</small>
+        </div>
+    </a>
+</div>
                         @guest
                             <div class="widget-header">
                                 <a href="{{ route('login') }}" class="ml-3 icontext">
@@ -51,6 +51,8 @@
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->full_name }} <span class="caret"></span>
                                     </a>
+
+                                    <a class="dropdown-item" href="{{ route('account.orders') }}">Orders</a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

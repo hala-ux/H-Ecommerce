@@ -12,7 +12,7 @@ class CreateSettingsTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { Schema::dropIfExists('settings');
         Schema::create('settings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('key')->unique();
