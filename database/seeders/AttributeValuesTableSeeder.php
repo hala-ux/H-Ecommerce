@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\AttributeValue;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class AttributeValuesTableSeeder extends Seeder
 {
     /**

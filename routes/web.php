@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\BaseController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Site\ProductController;
 use App\Http\Controllers\Site\CategoryController;
 use App\Http\Controllers\Site\CheckoutController;
 use App\Http\Controllers\Site\AccountController;
@@ -20,7 +20,7 @@ use App\Http\Controllers\Site\CartController;
 |
 */
 require 'admin.php';
-Route::view('/', 'site.pages.homepage');
+Route::view('/s', 'site.pages.homepage');
 Route::view('/login', 'site.pages.homepage')->name('login');
 Route::view('/register', 'site.pages.homepage')->name('register');
 Route::view('/', 'site.pages.homepage');
@@ -28,6 +28,7 @@ Auth::routes();
 Route::get('/detail', function () {
     return view('site.pages.product');
 });
+
 
 Auth::routes();
 
@@ -46,3 +47,12 @@ Route::get('/cart/clear', [CartController::class,'clearCart'])->name('checkout.c
 Route::get('checkout/payment/complete', [CheckoutController::class,'complete'])->name('checkout.payment.complete');
 
 Route::get('account/orders', [AccountController::class,'getOrders'])->name('account.orders');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/checkout', [CheckoutController::class,'getCheckout'])->name('checkout.index');
+    Route::post('/checkout/order', [CheckoutController::class,'placeOrder'])->name('checkout.place.order');
+
+    Route::get('checkout/payment/complete', [CheckoutController::class,'complete'])->name('checkout.payment.complete');
+
+    Route::get('account/orders', [AccountController::class,'getOrders'])->name('account.orders');
+});

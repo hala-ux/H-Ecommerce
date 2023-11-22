@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Contracts;
-
+use App\Http\Controllers\Admin\OrderController;
 interface OrderContract
 {
     public function storeOrderDetails($params);

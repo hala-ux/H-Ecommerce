@@ -2,6 +2,8 @@
 
 namespace App\Contracts;
 
+use App\Http\Controllers\Admin\ProductController;
+
 interface AttributeContract
 {
     /**
